@@ -96,7 +96,7 @@ export default function ProductCard({ product, onBuy }: ProductCardProps) {
           variant="contained"
           onClick={handleBuy}
         >
-          Comprar
+          Ver detalhes
         </Button>
       </CardActions>
     </Card>
