@@ -8,6 +8,7 @@ import {
   Rating,
   Box,
 } from '@mui/material';
+import Link from 'next/link';
 
 export interface Product {
   id: number;
@@ -34,71 +35,110 @@ export default function ProductCard({ product, onBuy }: ProductCardProps) {
   };
 
   return (
-    <Card
-      sx={{
-        height: 'auto',
-        display: 'flex',
-        flexDirection: 'column',
-        transition: 'transform 0.2s, box-shadow 0.2s',
-        '&:hover': {
-          transform: 'scale(1.02)',
-          boxShadow: 6,
-        },
-      }}
-    >
-      <CardMedia
-        component="img"
-        height="200"
-        image={product.image}
-        alt={product.title}
-        sx={{ objectFit: 'contain', p: 10, bgcolor: '#f5f5f5', marginTop:5, maxHeight: 375 }}
-      />
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Typography gutterBottom variant="h6" component="div" noWrap title={product.title}>
-          {product.title}
-        </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{
-            mb: 1,
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-          }}
-        >
-          {product.description}
-        </Typography>
+    <Link href={`/produto/${product.id}`} style={{ textDecoration: 'none' }}>
+      <Card
+        sx={{
+          width: '100%',
+          maxWidth: 240,
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          transition: 'transform 0.2s, box-shadow 0.2s',
+          '&:hover': {
+            transform: 'scale(1.02)',
+            boxShadow: 6,
+          },
+        }}
+      >
+        {/* Container da imagem com tamanho padronizado */}
         <Box
           sx={{
+            width: '100%',
+            height: 150,
+            bgcolor: '#f5f5f5',
             display: 'flex',
             alignItems: 'center',
-            gap: 1,
-            mb: 1,
+            justifyContent: 'center',
+            p: 1,
           }}
         >
-          <Rating value={product.rating.rate} precision={0.5} readOnly size="small" />
-          <Typography variant="body2" color="text.secondary">
-            ({product.rating.count})
-          </Typography>
+          <CardMedia
+            component="img"
+            image={product.image}
+            alt={product.title}
+            sx={{
+              width: 'auto',
+              height: '100%',
+              objectFit: 'contain',
+            }}
+          />
         </Box>
-        <Typography variant="h6" color="primary.main">
-          R$ {product.price.toFixed(2)}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button
-          size="small"
-          color="primary"
-          fullWidth
-          variant="contained"
-          onClick={handleBuy}
+
+        <CardContent
+          sx={{
+            flexGrow: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 0.5,
+            p: 1.5,
+            '&:last-child': { pb: 1.5 },
+          }}
         >
-          Ver detalhes
-        </Button>
-      </CardActions>
-    </Card>
+          <Typography
+            gutterBottom
+            variant="subtitle2"
+            component="div"
+            noWrap
+            title={product.title}
+            sx={{ fontWeight: 500, fontSize: '0.9rem' }}
+          >
+            {product.title}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{
+              fontSize: '0.75rem',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              minHeight: 32,
+            }}
+          >
+            {product.description}
+          </Typography>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 0.5,
+              mt: 0.5,
+            }}
+          >
+            <Rating value={product.rating.rate} precision={0.5} readOnly size="small" />
+            <Typography variant="caption" color="text.secondary">
+              ({product.rating.count})
+            </Typography>
+          </Box>
+          <Typography variant="body1" color="primary.main" sx={{ mt: 0.5, fontWeight: 600 }}>
+            R$ {product.price.toFixed(2)}
+          </Typography>
+        </CardContent>
+        <CardActions sx={{ p: 1.5, pt: 0 }}>
+          <Button
+            size="small"
+            color="primary"
+            fullWidth
+            variant="contained"
+            onClick={handleBuy}
+            sx={{ fontSize: '0.75rem' }}
+          >
+            Ver detalhes
+          </Button>
+        </CardActions>
+      </Card>
+    </Link>
   );
 }

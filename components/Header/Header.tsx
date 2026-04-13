@@ -38,7 +38,7 @@ export default function Header(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        Loja
       </Typography>
       <Divider />
       <List>
@@ -74,7 +74,7 @@ export default function Header(props: Props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Loja
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
@@ -102,7 +102,6 @@ export default function Header(props: Props) {
           {drawer}
         </Drawer>
       </nav>
-
     </Box>
   );
 }

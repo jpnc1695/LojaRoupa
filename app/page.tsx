@@ -1,7 +1,4 @@
 'use client';
-
-import Header from '@/components/Header/Header';
-import Footer from '@/components/Footer/Footer';
 import ProductCard, { Product } from '@/components/ProdutcCard/ProductCard';
 import { useEffect, useState } from 'react';
 import { Box, Container, CircularProgress, Typography, Pagination, Stack } from '@mui/material';
@@ -11,7 +8,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [page, setPage] = useState(1);
-  const itemsPerPage = 4; // Quantos produtos por página
+  const itemsPerPage = 8; // Quantos produtos por página
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -37,9 +34,8 @@ export default function Home() {
 
   return (
     <>
-      <Header />
-      <Box component="main" sx={{ flexGrow: 1, py: 4 }}>
-        <Container maxWidth="xl">
+      <Box component="main" sx={{ py: 4, mt: 2 }}>
+        <Container  maxWidth="lg" sx={{ py: 3, mt: 2 }}>
           {loading ? (
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
               <CircularProgress />
@@ -90,7 +86,6 @@ export default function Home() {
           )}
         </Container>
       </Box>
-      <Footer />
     </>
   );
 }
