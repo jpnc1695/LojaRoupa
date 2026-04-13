@@ -63,7 +63,6 @@ export default function Home() {
                   <ProductCard
                     key={product.id}
                     product={product}
-                    onBuy={(prod) => alert(`Adicionado: ${prod.title}`)}
                   />
                 ))}
               </Box>
