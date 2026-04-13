@@ -56,16 +56,29 @@ export default function Header(props: Props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', borderradius: '8px 8px 8px 8px', position: 'fixed', zIndex: 1100}}>  
       <CssBaseline />
-      <AppBar component="nav">
+      <AppBar 
+        component="nav"
+        sx={{
+          backgroundColor: '#1976d2',
+          borderRadius: '15px',
+          width: '85%',
+          position: 'fixed',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          top:9,
+          zIndex: 1100,   
+        }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { sm: 'none' }}}
+
           >
             <MenuIcon />
           </IconButton>

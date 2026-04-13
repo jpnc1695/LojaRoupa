@@ -2,7 +2,7 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider, createTheme  } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
@@ -20,30 +20,25 @@ const geistMono = Geist_Mono({
 
 const defaultTheme = createTheme();
 
-// Metadata não pode ser exportado de um Client Component.
-// Se precisar de metadados, mova-os para um Server Component separado.
-// Por enquanto, removemos ou mantemos apenas como exemplo (não terá efeito).
-// export const metadata: Metadata = { ... };
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="pt-BR"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <ThemeProvider theme={defaultTheme}>
           <CssBaseline />
           <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Header />
-            <Box component="main" sx={{ flexGrow: 1 }}>
+            {/* Adicione padding-top para compensar a altura fixa do header */}
+            <Box component="main" sx={{ flexGrow: 1, pt: '70px' }}>
               {children}
             </Box>
             <Footer />
           </Box>
+        </ThemeProvider>
       </body>
     </html>
   );
