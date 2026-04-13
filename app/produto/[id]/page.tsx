@@ -42,12 +42,8 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      {/* Botão voltar */}
-      <IconButton onClick={() => router.back()} sx={{ mb: 2 }}>
-        <ArrowBackIcon /> Voltar
-      </IconButton>
-
+    <Container maxWidth="lg" sx={{ py: 20 }}>
+  
       <Box
         sx={{
           display: 'flex',
@@ -101,6 +97,10 @@ export default function ProductDetailPage() {
           <Button variant="contained" size="large" fullWidth sx={{ mt: 2 }}>
             Comprar agora
           </Button>
+
+        <Button variant="contained" size="large" fullWidth  onClick={() => router.back()} sx={{ mb: 3, mt: 2 }}>
+           Voltar
+        </Button>
         </Box>
       </Box>
     </Container>
