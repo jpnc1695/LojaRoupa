@@ -36,7 +36,7 @@ export default function ProductCard({ product, onBuy }: ProductCardProps) {
   return (
     <Card
       sx={{
-        height: '100%',
+        height: 'auto',
         display: 'flex',
         flexDirection: 'column',
         transition: 'transform 0.2s, box-shadow 0.2s',
@@ -51,7 +51,7 @@ export default function ProductCard({ product, onBuy }: ProductCardProps) {
         height="200"
         image={product.image}
         alt={product.title}
-        sx={{ objectFit: 'contain', p: 2, bgcolor: '#f5f5f5' }}
+        sx={{ objectFit: 'contain', p: 10, bgcolor: '#f5f5f5', marginTop:5, maxHeight: 375 }}
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography gutterBottom variant="h6" component="div" noWrap title={product.title}>
